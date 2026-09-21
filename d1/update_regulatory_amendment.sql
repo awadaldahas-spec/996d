@@ -1,0 +1,1 @@
+UPDATE products SET regulatory_fr = REPLACE(regulatory_fr, '51ème Amendement', 'la dernière mise à jour en vigueur') WHERE regulatory_fr LIKE '%51ème Amendement%';

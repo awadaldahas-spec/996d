@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bostannaturals",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bostannaturals-db",
+      "database_id": "829be785-67bf-44ca-a35c-74c0a75f048a"
+    }
+  ],
+  "vars": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://qohdtxpnyebfrbolxrgw.supabase.co",
+    "SMTP_PORT": "587",
+    "SMTP_FROM": "no-reply@bostannaturals.com"
+  }
+}

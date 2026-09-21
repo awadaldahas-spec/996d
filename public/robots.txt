@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Private areas
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://bostannaturals.996d.workers.dev/sitemap.xml

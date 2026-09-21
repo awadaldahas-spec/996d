@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bn-forest: #1d3e13;
+  --bn-forest-dark: #12280c;
+  --bn-gold: #fed850;
+  --bn-cream: #e6dec5;
+  --background: var(--bn-cream);
+  --foreground: var(--bn-forest-dark);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bn-forest: var(--bn-forest);
+  --color-bn-forest-dark: var(--bn-forest-dark);
+  --color-bn-gold: var(--bn-gold);
+  --color-bn-cream: var(--bn-cream);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  /* Stop sideways swipe on phones when a child is wider than the viewport. */
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  /* Never let a wide child (long word, image, grid) stretch the page. */
+  max-width: 100%;
+}
+
+/* Long unbroken strings (SKUs, INCI names, URLs, emails) must not force
+   the layout wider than the screen. */
+h1, h2, h3, h4, p, li, a, span, td {
+  overflow-wrap: break-word;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+.placeholder-media {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bn-forest) 0%, var(--bn-forest-dark) 55%, #0a1907 100%);
+}
+
+.placeholder-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(254, 216, 80, 0.28), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(230, 222, 197, 0.18), transparent 50%);
+}
+
+.placeholder-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(254, 216, 80, 0.05) 0px,
+    rgba(254, 216, 80, 0.05) 2px,
+    transparent 2px,
+    transparent 14px
+  );
+}
+
+.placeholder-media > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-underline {
+  position: relative;
+}
+
+.gold-underline::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-top: 0.75rem;
+  background: var(--bn-gold);
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide {
+  animation: fadeSlide 0.6s ease forwards;
 }
