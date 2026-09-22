@@ -18,5 +18,8 @@ export function getTransporter() {
   });
 }
 
-export const COMMERCIAL_EMAIL = "commerciale@bostannaturals.com";
+// Product-specific request form (per-product page)
+export const PRODUCT_REQUEST_EMAIL = "demandes@bostannaturals.fr";
+// General order/contact form (Contact page)
+export const ORDER_REQUEST_EMAIL = "commandes@bostannaturals.fr";
 export const FROM_EMAIL = process.env.SMTP_FROM || "no-reply@bostannaturals.com";

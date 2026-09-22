@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getTransporter, COMMERCIAL_EMAIL, FROM_EMAIL } from "@/lib/mailer";
+import { getTransporter, ORDER_REQUEST_EMAIL, FROM_EMAIL } from "@/lib/mailer";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 import { getDb } from "@/lib/db";
 
@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
 
     await transporter.sendMail({
       from: FROM_EMAIL,
-      to: COMMERCIAL_EMAIL,
+      to: ORDER_REQUEST_EMAIL,
       replyTo: body.email,
       subject: `[Contact] Demande de ${body.name}`,
       html: `<table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;">${htmlRows}</table>`,

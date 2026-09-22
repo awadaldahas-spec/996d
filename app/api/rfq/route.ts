@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getTransporter, COMMERCIAL_EMAIL, FROM_EMAIL } from "@/lib/mailer";
+import { getTransporter, PRODUCT_REQUEST_EMAIL, FROM_EMAIL } from "@/lib/mailer";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 import { getDb } from "@/lib/db";
 
@@ -67,7 +67,7 @@ Thank you for your interest in Bostan Naturals.
 
 Your request has been successfully registered by our sales department. Our aromatic and natural raw materials undergo rigorous tracking from every field in Egypt, combined with quality controls and analyses adapted to the nature of the product; where necessary, complementary analyses may be carried out by specialised laboratories in France or in Europe.
 
-A member of our sales team (commerciale@bostannaturals.com) is currently reviewing your file and will get back to you within 24 hours to arrange the shipment of your samples or provide our best wholesale offer.
+A member of our sales team (demandes@bostannaturals.fr) is currently reviewing your file and will get back to you within 24 hours to arrange the shipment of your samples or provide our best wholesale offer.
 
 In the meantime, you can explore our full range by visiting our online catalog: bostannaturals.com.
 
@@ -86,7 +86,7 @@ Nous vous remercions pour l'intérêt que vous portez à Bostan Naturals.
 
 Votre demande a bien été enregistrée par notre service commerciale. Nos matières premières aromatiques et naturelles font l'objet d'un suivi rigoureux depuis chaque champ en Égypte, associé à des contrôles qualité et analyses adaptés à la nature du produit ; lorsque nécessaire, des analyses complémentaires peuvent être réalisées auprès de laboratoires spécialisés en France ou en Europe.
 
-Un conseiller de notre équipe commerciale (commerciale@bostannaturals.com) étudie actuellement votre dossier et reviendra vers vous sous 24 heures pour finaliser l'envoi de vos échantillons ou vous transmettre notre meilleure offre de prix de gros.
+Un conseiller de notre équipe commerciale (demandes@bostannaturals.fr) étudie actuellement votre dossier et reviendra vers vous sous 24 heures pour finaliser l'envoi de vos échantillons ou vous transmettre notre meilleure offre de prix de gros.
 
 En attendant, vous pouvez découvrir l'ensemble de notre gamme en visitant notre catalogue en ligne : bostannaturals.com.
 
@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
 
     await transporter.sendMail({
       from: FROM_EMAIL,
-      to: COMMERCIAL_EMAIL,
+      to: PRODUCT_REQUEST_EMAIL,
       replyTo: data.email,
       subject: `[RFQ] ${data.productSku} - ${data.companyName}`,
       html: buildInternalEmail(data),
